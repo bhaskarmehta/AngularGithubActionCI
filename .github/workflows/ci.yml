@@ -47,7 +47,7 @@ jobs:
         if: failure()  # Condition to check if the previous step failed
         uses: dawidd6/action-send-mail@v2
         with:
-          server_address: smtp.your-email-provider.com
+          server_address: smtp.gamil.com
           server_port: 587
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
