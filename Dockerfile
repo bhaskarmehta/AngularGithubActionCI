@@ -1,8 +1,8 @@
-FROM node:latest as build
+FROM node:alpine as build
 WORKDIR /app
 COPY . .
 RUN npm install
-RUN npm run build
+RUN npm run bugccild
 
 
 FROM nginx:latest
