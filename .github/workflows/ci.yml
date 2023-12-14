@@ -30,7 +30,29 @@ jobs:
           context: .  #  Here the . represents the root directory of the repository where the workflow is running. We can change this value if your Dockerfile is located in a different directory.
           push: true
           tags: bhasmeht/angular-image:1.1.9    # :${{ steps.new_tag.outputs.tag }}
-                 
+      - name: Send Email Notification on Success
+        if: success()  # Condition to check if the previous step was successful
+        uses: dawidd6/action-send-mail@v2
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: 'Docker image upload successful'
+          to: 'bhaskarmehta12@gmail.com, bhaskarmehta22@gmail.com'
+          body: 'The Docker image was successfully uploaded to DockerHub.'
+
+      - name: Send Email Notification on Failure
+        if: failure()  # Condition to check if the previous step failed
+        uses: dawidd6/action-send-mail@v2
+        with:
+          server_address: smtp.your-email-provider.com
+          server_port: 587
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: 'Docker image upload failed'
+          to: 'bhaskarmehta12@gmail.com, bhaskarmehta22@gmail.com'
+          body: 'There was a failure while uploading the Docker image to DockerHub. Please check the workflow logs.'         
 
 
       # - name: Install AWS CLI
