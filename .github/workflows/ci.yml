@@ -38,6 +38,7 @@ jobs:
           server_port: 587
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
+          from: bhaskarmehta422@gmail.com
           subject: 'Docker image upload successful'
           to: 'bhaskarmehta12@gmail.com, bhaskarmehta22@gmail.com'
           body: 'The Docker image was successfully uploaded to DockerHub.'
@@ -50,6 +51,7 @@ jobs:
           server_port: 587
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
+          from: bhaskarmehta422@gmail.com
           subject: 'Docker image upload failed'
           to: 'bhaskarmehta12@gmail.com, bhaskarmehta22@gmail.com'
           body: 'There was a failure while uploading the Docker image to DockerHub. Please check the workflow logs.'         
